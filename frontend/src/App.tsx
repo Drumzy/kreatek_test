@@ -1,15 +1,8 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./components/home.component";
-import AdminPanel from "./components/admin.component";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/admin" element={<AdminPanel />} />
-    </Routes>
-  );
+  return <Outlet />;
 }
 
 export default App;

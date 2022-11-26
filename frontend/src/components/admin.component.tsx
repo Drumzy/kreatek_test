@@ -1,11 +1,13 @@
+import { Outlet } from "react-router-dom";
+import "./admin.css";
 function AdminPanel() {
   return (
-    <div>
-      <h3>Add new Product</h3>
-      <div>
-        <label htmlFor="libelle">Libelle</label>
-        <input type="text" name="libelle" id="libelle" />
+    <div className="admin-container">
+      <div className="admin-links">
+        <a href="/admin/ajouter_produit">Ajouter produit</a>
+        <a href="/admin/ajouter_client">Ajouter client</a>
       </div>
+      <Outlet />
     </div>
   );
 }

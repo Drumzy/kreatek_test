@@ -1,0 +1,43 @@
+.cart-container {
+  position: absolute;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 0.2em;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  z-index: 20;
+  right: 5%;
+  top: 5%;
+}
+
+.cart-item {
+  display: flex;
+}
+.shop-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.products-container {
+  position: relative;
+  display: grid;
+  grid-template:
+    "a a a"
+    "b b b";
+  gap: 15px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.gift-badge {
+  display: block;
+  padding: 0.2em;
+  background-color: green;
+  border-radius: 15px;
+}
