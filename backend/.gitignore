@@ -7,3 +7,5 @@ database
 
 #prisma migrations
 prisma/migrations
+
+.http
