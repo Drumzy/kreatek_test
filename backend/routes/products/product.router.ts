@@ -12,13 +12,14 @@ ProductsRouter.get("/all", async (req: Request, res: Response) =>{
 
 ProductsRouter.post("/new_product", async (req: Request, res:Response) =>{
     const productEntry:ProductEntry = req.body;
+    console.log(productEntry)
     const productCheck: Produit | null = await prismaClient.produit.findUnique({where:{
          libelle: productEntry.libelle
      }})
      if (productCheck) return res.json({error: "Product already exists"});
-    await prismaClient.produit.create({data:productEntry})
+    await prismaClient.produit.create({data:{libelle:productEntry.libelle,prix_ttc:Number(productEntry.prix_ttc),en_stock:productEntry.en_stock,is_gift:productEntry.is_gift}})
     .then((response) => res.status(200).json({message:`${response.libelle} has been added successfully`}))
-    .catch((reason)=> res.json({error: "Please Verify your fields"}))
+    .catch((reason)=> res.json({error: `Please Verify your fields `}))
 })
 ProductsRouter.put("/:id", async (req: Request, res: Response) =>{
     const {id} = req.params

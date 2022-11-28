@@ -11,11 +11,12 @@ ClientRouter.get("/all",async (req:Request, res: Response) => {
 })
 ClientRouter.post("/new_client",async (req:Request, res:Response) => {
     const clientEntry:ClientCreateEntry = req.body;
+    console.log(clientEntry)
     const clientCheck: Client | null = await prismaClient.client.findUnique({where:{
          nom_complet: clientEntry.nom_complet
      }})
      if (clientCheck) return res.json({error: "Client already exists"});
-    await prismaClient.client.create({data:clientEntry})
+    await prismaClient.client.create({data:{nom_complet:clientEntry.nom_complet,nbr_gifts:Number(clientEntry.nbr_gifts),remise_default:Number(clientEntry.remise_default)}})
     .then((response) => res.status(200).json({message:`${response.nom_complet} has been added successfully`}))
     .catch((reason)=> res.json({error: "Please Verify your fields"}))
 })
@@ -42,5 +43,9 @@ ClientRouter.delete("/:id",async (req:Request,res:Response) => {
     }})
     .then((client)=> res.json({message: `${client.nom_complet} has been deleted successfully`}))
     .catch((reason)=> res.json({error: reason}));
+})
+ClientRouter.post("/login",async (req:Request, res: Response)=> {
+    const {nom_complet} = req.body;
+    await prismaClient.client.findUnique({where:{nom_complet: nom_complet}}).then((profile) => res.json(profile)).catch((reason) => res.json({error:"unauthorized"}))
 })
 export default ClientRouter

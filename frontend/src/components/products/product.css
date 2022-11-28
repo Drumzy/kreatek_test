@@ -1,0 +1,29 @@
+.form-container {
+  margin-top: 50px;
+  padding: 25px;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.inner-items {
+  display: flex;
+  gap: 5px;
+}
+.form-item label {
+  font-size: large;
+}
+.form-item input[type="text"],
+input[type="number"] {
+  padding: 12px 20px;
+  box-sizing: border-box;
+}

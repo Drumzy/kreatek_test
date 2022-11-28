@@ -10,14 +10,16 @@ import {
 import App from "./App";
 import AdminPanel from "./components/admin.component";
 import ClientLayout from "./components/clients/clientLayout.component";
+import Login from "./components/login.component";
 import AddProduct from "./components/products/addProduct.component";
-import Shop from "./components/shop.component";
+import Shop from "./components/shop/shop.component";
 import "./index.css";
 
 const mainRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<Shop />} />
+      <Route index element={<Login />} />
+      <Route path="/shop" element={<Shop />} />
       <Route path="/admin" element={<AdminPanel />}>
         <Route path="ajouter_produit" element={<AddProduct />} />
         <Route path="ajouter_client" element={<ClientLayout />}></Route>
